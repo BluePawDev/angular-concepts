@@ -19,8 +19,8 @@
                 Debug
             </mat-card-header>
 
-            <mat-card-content>
-                <span *ngIf="currentLesson">{{ currentLesson | json }}</span>
-                ng-template
-    </mat-card-content>
+<mat-card-content>
+    <span *ngIf="currentLesson; else elseBlock">{{ currentLesson | json }}</span>
+    <ng-template #elseBlock>Select a lesson</ng-template>
+</mat-card-content>
 </mat-card>
