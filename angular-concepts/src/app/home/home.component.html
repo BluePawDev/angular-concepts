@@ -1,12 +1,16 @@
 <mat-card>
     <mat-card-header>
         <mat-card-title>
-            Course Outline
+            {{title}}
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-
-        <!-- LESSON LIST -->
-
+        {{ themeColor }}
+        <hr>
+        <h3><span [style.color]="themeColor">Some Colored Text!</span></h3>
+        <hr>
+        <input matInput [(ngModel)]="themeColor" type="text">
+        <hr>
+        <button mat-button (click)="onClick">Action</button>
     </mat-card-content>
 </mat-card>
