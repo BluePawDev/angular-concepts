@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   title = 'Hello Workshop';
-  themeColor = 'red';
+  currentLesson = null;
   courseLessons = [
     { title: 'Hello Angular' },
     { title: 'Component Fundamentals' },
@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  updateColor() {
-    console.log('UPDATE COLOR WHOOP WHOOP!');
-    this.themeColor = 'salmon';
-  }
+  selectLesson(lesson: any){
+    console.log('SELECT LESSON FIRED!', lesson);
+    this.currentLesson = lesson;
+  };
 }
