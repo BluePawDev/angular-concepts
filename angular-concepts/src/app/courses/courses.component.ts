@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
+  currentCourse = null;
   courses = [
     {
       id: 1,
@@ -14,9 +15,21 @@ export class CoursesComponent implements OnInit {
       percentComplete: 26,
       favorite: true,
     },
+    {
+      id: 2,
+      title: 'JavaScript The Treally, Really Hard Parts',
+      description: 'Worship Will Sentence',
+      percentComplete: 50,
+      favorite: false,
+    },
   ];
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  selectCourse(course: any)   {
+    console.log('Selected course fired!', course);
+    this.currentCourse = course;
+  }
 }
