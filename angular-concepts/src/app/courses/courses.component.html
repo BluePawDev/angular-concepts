@@ -7,13 +7,16 @@
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
-
-                <mat-list-item *ngFor="let course of courses" (click)="selectCourse(course)">
-                    <p> {{ course.title}}</p>
-                    <button mat-icon-button color="warn" (click)="deleteCourse(course.id);$event.stopImmediatePropigation()">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </mat-list-item>
+                <mat-list>
+                    <mat-list-item *ngFor="let course of courses" (click)="selectCourse(course)">
+                        <h3 matLine>{{course.title}}</h3>
+                        <p matLine>{{course.description}}</p>
+                        <p matLine>{{course.description}}</p>
+                        <button mat-icon-button color="warn" (click)="deleteCourse(course.id);$event.stopImmediatePropagation()">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </mat-list-item>
+                </mat-list>
 
             </mat-card-content>
         </mat-card>
@@ -23,26 +26,25 @@
         <mat-card>
             <mat-card-header>
                 <mat-card-title>
-                    Selected Course
+                    Select Course
                 </mat-card-title>
             </mat-card-header>
-            <mat-card-content>
-                <span *ngIf="currentCourse, else elseBlock"></span>
-                <ng-template #elseBlock>Select a course</ng-template>
-                <p *ngIf="currentCourse">
-                    <span><strong>Course Title</strong>: </span>{{currentCourse.title}} <span>( ID # </span>{{currentCourse.id}} <span>)</span>
-                    <br>
-                    <span><strong>Description</strong>: </span>{{currentCourse.description}}
-                    <br>
-                    <span><strong>% Complete</strong>: </span>{{currentCourse.percentComplete}}
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-
-                <!-- COURSE ACTIONS -->
-
-            </mat-card-actions>
+            <form #form="ngForm" (submit)="saveCourse()">
+                <mat-card-content>
+                    <mat-form-field>
+                        <input matInput placeholder="Title" type="text" name="title" required [(ngModel)]="selectedCourse.title">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Description" type="text" name="description" [(ngModel)]="selectedCourse.description">
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button [disabled]="form.invalid" type="submit" mat-button color="primary">Submit</button>
+                    <button type="button" mat-button (click)="cancel()">Cancel</button>
+                </mat-card-actions>
+            </form>
+            <pre>{{form.value | json}}</pre>
+            <pre>{{form.valid | json}}</pre>
         </mat-card>
     </div>
 </div>
-
