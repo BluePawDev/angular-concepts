@@ -28,8 +28,12 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  selectCourse(course: any)   {
+  selectCourse(course: any) {
     console.log('Selected course fired!', course);
     this.currentCourse = course;
+  }
+
+  deleteCourse(courseid: any)  {
+    console.log('Course deleted!', this.currentCourse);;
   }
 }

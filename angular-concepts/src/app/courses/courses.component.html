@@ -9,7 +9,10 @@
             <mat-card-content>
 
                 <mat-list-item *ngFor="let course of courses" (click)="selectCourse(course)">
-                    {{ course.title}}
+                    <p> {{ course.title}}</p>
+                    <button mat-icon-button color="warn" (click)="deleteCourse(course.id);$event.stopImmediatePropigation()">
+                        <mat-icon>delete</mat-icon>
+                    </button>
                 </mat-list-item>
 
             </mat-card-content>
@@ -27,17 +30,12 @@
                 <span *ngIf="currentCourse, else elseBlock"></span>
                 <ng-template #elseBlock>Select a course</ng-template>
                 <p *ngIf="currentCourse">
-                    <!-- <span>Course ID: </span>{{currentCourse.title}} -->
-                    <!-- <br> -->
                     <span><strong>Course Title</strong>: </span>{{currentCourse.title}} <span>( ID # </span>{{currentCourse.id}} <span>)</span>
                     <br>
                     <span><strong>Description</strong>: </span>{{currentCourse.description}}
                     <br>
                     <span><strong>% Complete</strong>: </span>{{currentCourse.percentComplete}}
                 </p>
-
-                <!-- COURSE FORM -->
-
             </mat-card-content>
             <mat-card-actions>
 
@@ -47,3 +45,4 @@
         </mat-card>
     </div>
 </div>
+
